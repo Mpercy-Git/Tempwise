@@ -1,0 +1,2 @@
+# Empty - Dependencies are defined in custom_components/tempwise_ble/manifest.json
+# The integration is self-contained and doesn't require a separate requirements.txt

@@ -1,0 +1,13 @@
+{
+  "domain": "tempwise_ble",
+  "name": "Tempwise BLE",
+  "codeowners": ["@yourusername"],
+  "config_flow": true,
+  "documentation": "https://github.com/yourusername/tempwise",
+  "issues": "https://github.com/yourusername/tempwise/issues",
+  "requirements": [
+    "bleak>=0.20.0"
+  ],
+  "version": "1.0.0",
+  "homeassistant": "2022.1.0"
+}

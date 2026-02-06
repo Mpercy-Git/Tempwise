@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Tempwise BLE",
+        "description": "Set up your Tempwise BG-BT1W thermometer\n\n**Device Address**: MAC address in format {address_hint}\n**Characteristic UUID**: Temperature characteristic UUID {uuid_hint}",
+        "data": {
+          "address": "Device Bluetooth Address (MAC)",
+          "char_uuid": "Temperature Characteristic UUID",
+          "name": "Device Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to device",
+      "invalid_auth": "Invalid credentials"
+    },
+    "abort": {
+      "already_configured": "Device is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tempwise Options",
+        "data": {
+          "scan_timeout": "BLE Scan Timeout (seconds)",
+          "update_interval": "Update Interval (seconds)"
+        }
+      }
+    }
+  }
+}

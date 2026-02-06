@@ -1,0 +1,8 @@
+{
+  "name": "Tempwise BLE Temperature Sensor",
+  "content_in_root": false,
+  "render_readme": true,
+  "homeassistant": "2022.1.0",
+  "iot_class": "local_polling",
+  "category": "integration"
+}
