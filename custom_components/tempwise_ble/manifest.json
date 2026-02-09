@@ -9,6 +9,5 @@
     "bleak>=0.20.0"
   ],
   "version": "1.0.3",
-  "homeassistant": "2022.1.0",
-  "bluetooth": true
+  "homeassistant": "2022.1.0"
 }
