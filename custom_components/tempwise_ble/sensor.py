@@ -77,7 +77,8 @@ class TempwiseTemperatureSensor(SensorEntity):
     @property
     def available(self) -> bool:
         """Return True if entity is available."""
-        return self.coordinator.is_connected
+        # Entity is available if we have a temperature reading
+        return self.coordinator.last_temperature is not None
 
     @property
     def device_info(self):
@@ -100,11 +101,6 @@ class TempwiseTemperatureSensor(SensorEntity):
             self.coordinator.register_callback(self._temperature_updated)
         )
 
-    @property
-    def _temperature_updated(self):
+    def _temperature_updated(self, temp: float):
         """Callback for temperature updates."""
-
-        def callback(temp: float):
-            self.async_write_ha_state()
-
-        return callback
+        self.async_write_ha_state()
