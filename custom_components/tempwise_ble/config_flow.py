@@ -13,6 +13,9 @@ DOMAIN = "tempwise_ble"
 # Default UUID for Tempwise BG-BT1W temperature characteristic
 DEFAULT_CHAR_UUID = "0000ff01-0000-1000-8000-00805f9b34fb"
 
+# Device names to search for
+TEMPWISE_DEVICE_NAMES = ["Tempwise", "BG-BT1W"]
+
 CONFIG_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_ADDRESS): str,
@@ -154,5 +157,32 @@ class TempwiseBLEConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
             description_placeholders={
                 "address_hint": "XX:XX:XX:XX:XX:XX",
+            },
+        )
+
+    async def async_step_bluetooth_discovery(
+        self, discovery_info
+    ) -> FlowResult:
+        """Handle discovery from Home Assistant Bluetooth."""
+        device_address = discovery_info.address
+        device_name = discovery_info.name or "Tempwise Thermometer"
+
+        # Check if device name matches Tempwise
+        if not any(
+            name.lower() in device_name.lower() for name in TEMPWISE_DEVICE_NAMES
+        ):
+            return self.async_abort(reason="not_tempwise_device")
+
+        # Avoid duplicate entries
+        await self.async_set_unique_id(device_address)
+        self._abort_if_unique_id_configured()
+
+        # Auto-create entry
+        return self.async_create_entry(
+            title=device_name,
+            data={
+                CONF_ADDRESS: device_address,
+                "char_uuid": DEFAULT_CHAR_UUID,
+                CONF_NAME: device_name,
             },
         )
