@@ -8,6 +8,6 @@
   "requirements": [
     "bleak>=0.20.0"
   ],
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homeassistant": "2022.1.0"
 }
