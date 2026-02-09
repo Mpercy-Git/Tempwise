@@ -31,15 +31,25 @@ class TempwiseBLEConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self, user_input: dict | None = None
     ) -> FlowResult:
         """Handle the initial step - offer discovery or manual entry."""
-        if user_input is None:
-            return self.async_show_menu(
-                step_id="user",
-                menu_options=["discover", "manual"],
-                description_placeholders={},
-            )
+        if user_input is not None:
+            # User selected an option
+            if user_input.get("action") == "discover":
+                return await self.async_step_discover()
+            elif user_input.get("action") == "manual":
+                return await self.async_step_manual()
 
-        # This shouldn't be reached, but handle it
-        return await self.async_step_discover()
+        # Show menu with options
+        return self.async_show_form(
+            step_id="user",
+            data_schema=vol.Schema(
+                {
+                    vol.Required("action"): vol.In(
+                        {"discover": "Scan for devices (automatic)", "manual": "Manual entry"}
+                    ),
+                }
+            ),
+            description_placeholders={"setup": "Choose how to set up your Tempwise thermometer"},
+        )
 
     async def async_step_discover(
         self, user_input: dict | None = None
