@@ -4,7 +4,7 @@
   "codeowners": ["@Mpercy-Git"],
   "config_flow": true,
   "documentation": "https://github.com/Mpercy-Git/Tempwise",
-  "issues": "https://github.com/Mpercy-Git/Tempwise/issues",
+  "issue_tracker": "https://github.com/Mpercy-Git/Tempwise/issues",
   "requirements": [
     "bleak>=0.20.0"
   ],
