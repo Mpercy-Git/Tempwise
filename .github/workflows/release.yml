@@ -41,9 +41,9 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            tempwise_ble_mqtt.py
+            custom_components/tempwise_ble/**
             hacs.json
-            requirements.txt
+            README.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -55,4 +55,4 @@ jobs:
       - name: HACS validation
         uses: hacs/action@22.5.0
         with:
-          category: script
+          category: integration
