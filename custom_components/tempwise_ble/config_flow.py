@@ -8,10 +8,13 @@ from .coordinator import TempwiseBLECoordinator
 
 DOMAIN = "tempwise_ble"
 
+# Default UUID for Tempwise BG-BT1W temperature characteristic
+DEFAULT_CHAR_UUID = "0000ff01-0000-1000-8000-00805f9b34fb"
+
 CONFIG_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_ADDRESS): str,
-        vol.Required("char_uuid"): str,
+        vol.Required("char_uuid", default=DEFAULT_CHAR_UUID): str,
         vol.Required(CONF_NAME, default="Tempwise Thermometer"): str,
     }
 )
