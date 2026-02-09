@@ -1,10 +1,10 @@
 {
   "domain": "tempwise_ble",
   "name": "Tempwise BLE",
-  "codeowners": ["@yourusername"],
+  "codeowners": ["@Mpercy-Git"],
   "config_flow": true,
-  "documentation": "https://github.com/yourusername/tempwise",
-  "issues": "https://github.com/yourusername/tempwise/issues",
+  "documentation": "https://github.com/Mpercy-Git/Tempwise",
+  "issues": "https://github.com/Mpercy-Git/Tempwise/issues",
   "requirements": [
     "bleak>=0.20.0"
   ],
